@@ -84,7 +84,7 @@ div.new-nav > span
 {
 	cursor:pointer;
 	position: relative;
-	left: 35%;
+	left: 50%;
 	bottom:3.65em;
 	font-weight: 400;
 	font-size: 25px;
@@ -103,7 +103,7 @@ div.new-nav > span > img
 {
 
 	position: relative;
-	left: 35%;
+	left: 45%;
 	bottom:3.35em;
 	font-weight: 550;
 	font-size: 27px;
@@ -118,10 +118,10 @@ div.new-nav > span > img
 
 #about-container
 {
-
+	position: relative;
 	height:34em;
 	width: 30%;
-	top:15em;
+	top:-12.5em;
 	margin-top: 10em;
 	margin-left:73.7%;
 
@@ -136,7 +136,7 @@ div.new-nav > span > img
 	position: relative;
 	background-repeat: no-repeat;
 	background-size: 100%;
-	background-position: 2.5em 50%;
+	background-position: 2.5em 70%;
 	height: 105%;
 }
 #about-me-heading
