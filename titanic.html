@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>
+		Phillip's Data Science Blog
+	</title>
+	<link href = "./css/style-titanic.css" type = "text/css" rel = "stylesheet">
+	<link href = "https://fonts.googleapis.com/css?family=Quicksand" type = "text/css" rel = "stylesheet"> <!-- fonts -->
+
+	<script src = "./javascript/scripts.js" type = "text/javascript"></script>
+</head>
+
+<body>
+
+  <div id = "nav">
+
+    <div class = "nav-elements">
+      <span id = "title" onclick = "location.href = 'https://tran-phillip.github.io/'; "> Cry Companions</span>
+      <h3> Suffering Together </h3>
+      <div class = "new-nav">
+        <span id = "test"> DataPhille </span>
+        <span><img src = "https://maxcdn.icons8.com/Share/icon/win8/Logos//instagram_new1600.png"></span>
+        <span ><!-- Facebook icon by Icons8 -->
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAzklEQVRIS+2W0Q3CMAxEXycCNmATYALYANiADYARmIAV2k3YAHRRIqpSBVHHCKHmq2rVeznbcVzxXEtgDUxb7yyPNXAAzhKpotIJWFhUM/9KeyWQnBydIEk2gGRx4gyqBbo7Q4K8FXSJCVdUbq0Nv2zeAlI1Kb99qyhoFvPrDkpHI4GyRWUJXReULaqfBu2BXeZIzIFr9/sQR+9AvZ3GAyS32xKOksb/FMPoyNy9x2IYfJV/Errmq8OJqsJz3Ao3cdu+muGm4ETUxHlCJngAkE08aC5p73wAAAAASUVORK5CYII=">
+        </span>
+        <span ><!-- Twitter icon by Icons8 -->
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABjElEQVRIS9WW/TEEQRDF30XgZEAEZIAIEIETASJABjJABIgAEdzJQAhkoH5b87Zmv3tQV3X9z97e9PTrfv2mZ2dak83WhKONATqUdCZpPzGzkvQo6S1jirWVK9qRxKaHAirvJF0M+N9I+pJ0Iumbp4FYuJZ0HgRbSLoPJPWRCpgbiEqgACPT25TRUCyy3QoAQeV2X0Xe+5mqy7n2GpwvAyC4QBstqXsEl089m8mICl+yCtn4GgQ6lfSMby5vgu6NBGCdSqGNHkXsyAo0EBVhiGIMLBI896E/JFZXZNWVBpryrxnzjxLep4J7/T0JoXrPe4TCDqJRAn5XSUgdoHk6rMeBIBGX3SSeDhB/cEYAQlWMpd8a866hzPb0/i9RNKpp94h36KNXf5E444uEG9Z3HwHGNPDsK6GPIeorYxLIDgBepqkeAfOkrg5opCKLgrsmOmpGQdwjK8094vD2lt+TKNMZmjs9GaqI4NAUPUMAMJUBYNBOWlsMvtIB9jni6WAokilejf4S25ivoHBRP+PxRWvpRzTQAAAAAElFTkSuQmCC">
+        </span>
+        <span>
+          <!-- Horse icon by Icons8 -->
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAB1ElEQVRIS72VgTEEQRBF/0XgRIAIEAEiQARcBIgAEXARIAMiQAROBE4EiIB6W/3V3NSMs7tX11VbtzU322+6+3fPQEuywZI4WhRoXdK5pF1JvE/iGcfvQkBbkh4lDQvZuZN0zHrfiHD+ElHknE9JG5L47Q26iJTVSk0K94D1jYjTrswR1K2kUR8Qhac2ub1LWssWxzUQKdmXRKExUjC1gqImVlgOGsVCI4LwMUlB/IEzHCDVrkZNnrKPhwYBuQlxAMtDbwMtgRrVIdG3gPD+3cZrYW8VdCrpStJzpI16bPaAFevO4n0U3qBrSScdQQ+SEBKZmakTIPeCQSiNbu9ipA3QToAuDQTkmhhkOTt9XzGvDiK1qVD4BsMxBoh9PN63TVsAIgJUx9RlA5Z2PKdCiR+SSE1uaQZSIbgkzLtprWEd5WvASSWR4bQZkpl5fwqiRhyepzpU3UuETZQ0cFG2AbRS0z3A514TDMIjhmGMHSI6k4QiS8bpqRNpRgwYIL7HVzUiTwpuSPrMNSLCkvm6SEFkwjOyCqIPKD4bce7eahRUIPlgKWhm21/XhPO+mtSBFHkqp458ZXQCOR2HMT0qWftdRo1E7hr9O6J5jlv93+eGbQX6AaitbHs2nBKLAAAAAElFTkSuQmCC">
+        </span>
+      </div>
+    </div> <!-- Nav elements -->
+  </div>
+  <div class = "background">
+  </div>
+  <div class = "blog-box">
+    <div class = "post-title">
+      Titanic --Kaggle--
+
+    </div>
+    <div class = "post-body">
+      <p>
+        Everyone just getting started with learning machine learning is always recommended to start with the Titanic dataset <strong>(https://www.kaggle.com/c/titanic)</strong> , mainly for it's simple to understand predictors and its potential for creative feature engineering. <br>
+        The titanic dataset is a dataset with 1309 observations (split into a training and validation set) and 9 features. Each observation represents an individual passenger aboard the Titanic. The response variable is ‘Survival’, which is a binary variable that is coded as 1 for survived, and 0 for did not survive. There are 9 features, or ‘predictors’, in the Titanic dataset. <br><br>
+
+        <strong>P-class</strong> : The socioeconomic status of the passenger (1 = Upper, 2 = Middle, 3 = Lower)<br><br>
+        <strong>Sex</strong> : The gender of the passenger <br><br>
+        <strong>Age</strong> : The age in years of the passenger<br><br>
+        <strong>SibSp</strong> : The number of siblings or spouses the passenger had aboard the titanic<br><br>
+        <strong>Parch</strong> : The number of parents or children the passenger had aboard the titanic <br><br>
+        <strong>Ticket</strong> : The ticket number of the passenger<br><br>
+        <strong>Fare</strong> : The fare the passenger had to pay<br><br>
+        <strong>Cabin</strong> : The cabin number of the passenger (allowed to be null as not all passengers had a cabin)<br><br>
+        <strong>Embarked</strong>: The port where the passenger got on the Titanic ( C = Cherbourg, Q = Queenstown, S = Southampton )<br><br>
+
+        So, ultimately the ‘goal’ of this project is to create a model that can accurately predict whether a passenger survived the Titanic disaster using the features given to us. Sounds, simple enough. </p>
+        <h1> Data Exploration </h1>
+        <p>
+          Before we begin to create a model, the first step of any data science project is to explore the dataset. In this exploratory phase, we will look through each 'feature' in our data and determine their use in our overall model. The titanic dataset is a reletively simple set, so our data exploration process will mainly focus on whether or not each feature has an impact on our response (whether or not a passenger dies), although in more complicated projects, the data exploration phase may be more involved!</p>
+          <h1> Read The Data </h1>
+          <p>
+            Before we begin, the packages I will be using in this post are Numpy, Pandas, and Sklearn. <br>
+            First, we must read our data into a pandas dataframe. <br><br>
+            <i>>titanic_df = pd.read_csv(“train.csv”) <br></i>
+            <i>>titanic_df.head()<br></i>
+            <i>> titanic_df.head()<br></i>
+          </p>
+
+
+
+
+
+
+
+
+
+          <table>
+            <tr>
+              <th> PassengerId </th>
+              <th> Survived </th>
+              <th> Pclass </th>
+              <th> Name </th>
+              <th> Sex </th>
+              <th> Age </th>
+              <th> SibSp </th>
+              <th> Parch </th>
+              <th> Ticket </th>
+              <th> Fare </th>
+              <th> Cabin </th>
+              <th> Embarked </th>
+            </tr>
+            <tr>
+              <td> 1 </td>
+              <td> 0 </td>
+              <td> 3 </td>
+              <td> Braund, Mr. Owen Harris</td>
+              <td> male </td>
+              <td> 22 </td>
+              <td> 1 </td>
+              <td> 0 </td>
+              <td> A/5 21171</td>
+              <td> 7.2500</td>
+              <td> NaN </td>
+              <td> S </td>
+            </tr>
+            <tr>
+              <td> 2 </td>
+              <td> 1 </td>
+              <td> 1 </td>
+              <td> Cumings, Mrs. John Bradley </td>
+              <td> female </td>
+              <td> 38 </td>
+              <td> 1 </td>
+              <td> 0 </td>
+              <td> PC 17599</td>
+              <td> 71.2833   </td>
+              <td> C85 </td>
+              <td> C </td>
+            </tr>
+            <tr>
+              <td> 3 </td>
+              <td> 1 </td>
+              <td> 3 </td>
+              <td> Heikkinen, Miss. Laina  </td>
+              <td> female </td>
+              <td> 26 </td>
+              <td> 0 </td>
+              <td> 0 </td>
+              <td> STON/O2. </td>
+              <td> 7.9250 </td>
+              <td> NaN </td>
+              <td> S </td>
+            </tr>
+            <tr>
+              <td> 4 </td>
+              <td> 1 </td>
+              <td> 1 </td>
+              <td> Futrelle, Mrs. Jacques Heath </td>
+              <td> female </td>
+              <td> 35 </td>
+              <td> 1 </td>
+              <td> 0 </td>
+              <td> 113803</td>
+              <td> 53.1000 </td>
+              <td> C123 </td>
+              <td> S </td>
+            </tr>
+            <tr>
+              <td> 5 </td>
+              <td> 0 </td>
+              <td> 3 </td>
+              <td>Allen, Mr. William Henry</td>
+              <td> male </td>
+              <td> 35 </td>
+              <td> 0 </td>
+              <td> 0 </td>
+              <td> 373450</td>
+              <td> 8.0500    </td>
+              <td> NaN </td>
+              <td> S </td>
+            </tr>
+          </table>
+          <p>
+            Firstly, right off the bat we can tell that passengerId will have no effect on response (as every passengerID is unique), so let us drop this feature from our dataframe. 
+            <br><br>
+            <i> > titanic_df = titanic_df.drop(‘PassengerId’, axis = 1) <br>
+              // The (axis = 1) part of the code specifies that it is a column you want to remove rather than a row</i>
+              <br><br>
+              Alright, now lets start digging the data. 
+
+
+            </p>
+            <h1>Does Money Float or Sink?</h1>
+            <p>
+              Does the passenger’s socioeconomic status impact whether or not said person survived the Titanic disaster?<br>
+              First, let’s create a frequency table to see how many people were in each socioeconomic class<br><br>
+              <i>> pd.crosstab(titanic_df[‘Pclass’], columns = [‘Count’])</i>
+              <table>
+                <tr>
+                  <th> PClass </th>
+                  <th> Count </th>
+                </tr>
+                <tr>
+                  <th> 1 </th>
+                  <th> 216 </th>
+                </tr>
+                <tr>
+                  <th> 2 </th>
+                  <th> 184 </th>
+                </tr>
+                <tr>
+                  <th> 3 </th>
+                  <th> 491 </th>
+                </tr>
+              </table>
+              <p><i>Remember that in this dataset, 1 = 1st class , 2 = 2nd class, 3 = 3rd class.</i></p>
+              <br>
+              <p>So, there are 216 people in first class, 184 people in second class, and 491 people in third class. However, this on its own is not very interesting. </p>
+              <p>To determine whether socioeconomic status has an impact, we must see how many people were in 1st class AND survived the titanic, and compare it to those in 2nd and 3rd class who also survived the Titanic. Once again, we can do this with a modified frequency tables, called a contingency table.</p>
+              <br>
+              <p><i>> pd.crosstab(titanic_df.Pclass, titanic_df.Survived)</i><br></p>
+              <table>
+                <tr>
+                  <th> Survived </th>
+                  <th> 0 </th>
+                  <th> 1</th>
+                </tr>
+                <tr>
+                  <th> Pclass </th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th> 1 </th>
+                  <th> 80 </th>
+                  <th> 136 </th>
+                </tr>
+                <tr>
+                  <th> 2 </th>
+                  <th> 97 </th>
+                  <th> 87 </th>
+                </tr>
+                <tr>
+                  <th> 3 </th>
+                  <th> 372 </th>
+                  <th> 119 </th>
+                </tr>
+
+              </table>
+              <p><i>Remember that 1 means that the passenger survived, while 0 means the passenger did not. </i></p>
+              <p>
+               Just from a glance, we can see that more people in 1st class survived the titanic than those in 3rd class, despite 3rd class having a significantly larger amount of people.<br><br>
+
+               But, a glance is not very empirical, so let us use an odds ratio to get a more tangible measurement. <br><br>
+
+               Read more about odds ratios here: https://en.wikipedia.org/wiki/Odds_ratio<br><br>
+
+               <b> ΩPClass =1 && Pclass = 2</b> = (# of passengers that survived in 1st class  * # of passengers that died in 2nd class) / (# of passengers that survived in 2nd class * # of passengers that died in 1st class) <br><br>
+               = (136 * 97) / (87 * 80) <br>
+               = <strong>1.895402299<br><br></strong>
+               This means that odds of passengers surviving in 1st class is 1.8954 times larger than the odds of a passenger in surviving in 2nd class. <br><br>
+               Lets do the same, this time comparing 1st class to 3rd class.<br><br>
+
+               <b>ΩPClass =1 && Pclass</b> = 3 = (# of passengers that survived in 1st class  * # of passengers that died in 3nd class) / (# of passengers that survived in 3nd class * # of passengers that died in 1st class) <br><br>
+               = (136 * 372) /  (119 * 80)<br>
+               = <strong>5.314285714</strong> <br><br>
+               Wow! Thats pretty high, the odds of a passenger surviving in 1st class is 5.3143 times higher than the odds of a passenger surviving in 3rd class!<br><br>
+               Fianlly, we know that there is a effect between 1st and 3rd class survival rates and 1st and 2nd class, lets check the effect between 2nd and 3rd class<br><br>
+               <b>ΩPClass =2 && Pclass = 3</b> = (# of passengers that survived in 2st class  * # of passengers that died in 3nd class) / (# of passengers that survived in 3nd class * # of passengers that died in 2st class) <br><br>
+               = (87 * 372) /  (119 * 97)<br>
+               = <strong>2.803777181</strong><br><br>
+               Thus, the odds of surviving in second class is 2.80 times higher than the odds of surviving in third class.<br> We see that there is an effect on survival at all levels of Pclass, thus we can say that Pclass signifigantly affects survival chances! <br>
+             </p>
+           </p>
+           <h1> Any Other Name Just As Sweet?</h1>
+           <p>
+             Ah, the names of the passengers.<br> This is why cursory glances should not be used as the only metric for defining importance, as from a cursory glance, one would not see any value in using the names of a passenger to predict survival, as names seem really arbitrary, however, that is not entirely true.<br>
+             The first and last names are arbitrary, Johns did not survive more than Steves and Marys did not survive more than Bettys, however when looking at the title (Mr, Miss, Master, ect) a trend emerges. <br>
+
+             First, to extract the titles from the full names, I wrote a function: <br><br>
+
+             <i>> 
+               def getTitle(df):<br>
+               &emsp;&emsp;names = []<br>
+               &emsp;&emsp;for name in df.Name:<br>
+               &emsp;&emsp;&emsp;title = name.split(',')[1].split('.')[0].strip()<br>
+               &emsp;&emsp;&emsp;names.append(title)<br>
+               &emsp;&emsp;df['Title'] = names<br><br>
+               > getTitle(titanic_df) <br><br>
+
+               > titanic_df['Title'].unique()<br>
+
+               array(['Mr', 'Mrs', 'Miss', 'Master', 'Don', 'Rev', 'Dr', 'Mme', 'Ms',
+               'Major', 'Lady', 'Sir', 'Mlle', 'Col', 'Capt', 'the Countess',
+               'Jonkheer'], dtype=object)</i><br><br>
+               Looks like there are 17 unique titles in the entire data-set.<br><br>
+
+               Lets look at the frequency table :<br><br>
+               <i>> pd.crosstab(titanic_df.Title, columns = [‘Count’]) </i><br>
+               <table>
+                 <tr>
+                   <th> Title </th>
+                   <th> Count </th>
+                 </tr>
+                 <tr>
+                   <td> Capt </td>
+                   <td> 1 </td>
+                 </tr>
+                 <tr>
+                   <td> Col </td>
+                   <td> 2 </td>
+                 </tr>
+                 <tr>
+                   <td> Don </td>
+                   <td> 1 </td>
+                 </tr>
+                 <tr>
+                  <td> Dr </td>
+                  <td> 7 </td>
+                </tr>
+                <tr>
+                  <td> Jonkheer </td>
+                  <td> 1 </td>
+                </tr>
+                <tr>
+                  <td> Lady </td>
+                  <td> 2 </td>
+
+                </tr>
+                <tr>
+                  <td> Major </td>
+                  <td> 2 </td>
+                </tr>
+                <tr> 
+                  <td> Master </td>
+                  <td> 40 </td>
+                </tr>
+                <tr>
+                  <td> Miss </td>
+                  <td> 182 </td>
+                </tr>
+                <tr>
+                  <td> Mlle </td>
+                  <td> 2</td>
+
+                </tr>
+                <tr>
+                  <td> Mr </td>
+                  <td> 517 </td>
+                </tr>
+                <tr>
+                  <td> Mrs </td>
+                  <td> 125 </td>
+
+                </tr>
+                <tr>
+                  <td> Ms </td>
+                  <td> 1 </td>
+
+                </tr>
+                <tr>
+                  <td> Rev </td>
+                  <td> 6 </td>
+
+                </tr>
+                <tr>
+                  <td> Sir </td>
+                  <td> 1 </td>
+                </tr>
+              </table><br>
+              <p>This is looking a bit messy, also some titles only have one entry in them, thus making them poor for generalization and predictions in a real-world setting. So to remedy this, I will start sorting these titles into more general categories. For titles that appear only once, I put into a “unique” category, for titles that appear infrequently, I put into a “Rare” category. I also combine  Lady, Mme, Mlle to the more general  “Ms”</p>
+              <p><i>
+                >
+                def combineTitles(df): <br>
+                &emsp;&emsp;index = 0;<br>
+                &emsp;&emsp;for title in df.Title:<br>
+                &emsp;&emsp; if (title == 'Capt') or (title == 'Don') or (title == 'Jonkheer'):<br>
+                &emsp;&emsp;&emsp; df.Title[index] = 'Unique'<br>
+                &emsp;&emsp; elif (title == 'Col') or (title == 'Dr') or (title == 'Major')  or (title == 'Rev'):<br>
+                &emsp;&emsp;&emsp; df.Title[index] = 'Rare'<br>
+                &emsp;&emsp; elif (title == "Mme") or (title = "Lady") or (title == 'Mlle'):<br>
+                &emsp;&emsp;&emsp; df.Title[index] = 'Ms'<br>
+                &emsp;&emsp; index +=1<br><br>
+
+                > combineTitles(titanic_df)<br><br>
+                > pd.crosstab(titanic_df.Title, columns = [‘Count’]) <br>
+              </p></i>
+              <table>
+                <tr>
+                  <th> Title </th>
+                  <th> Count </th>
+                </tr>
+                <tr>
+                  <td> Master </td>
+                  <td> 40 </td>
+                </tr>
+                <tr>
+                  <td>Miss</td>
+                  <td> 182 </td>
+
+                </tr>
+                <tr>
+                  <td> Mr </td>
+                  <td> 517 </td>
+                </tr>
+                <tr>
+                  <td> Mrs </td>
+                  <td> 125 </td>
+                </tr>
+                <tr>
+                  <td> Ms </td>
+                  <td> 5 </td>
+                </tr>
+                <tr> 
+                  <td> Rare </td>
+                  <td> 17 </td>
+                </tr>
+                <tr> 
+                  <td> Unique </td>
+                  <td> 5 </td>
+
+                </tr>
+              </table>
+              <br>
+              <p>
+                Finally ,lets see if these titles have an impact on survival.<br><br>
+
+                Instead of odds ratios, lets examine the mean survival of these titles. <br><br>
+                <i>> titanic_df[['Title', 'Survived']].groupby('Title').mean()</i>
+                <table>
+                  <tr>
+                    <th> Title </th>
+                    <th> Survival Rate </th>
+                  </tr>
+                  <tr> 
+                    <td> Master </td>
+                    <td> .575 </td>
+                  </tr>
+                  <tr>
+                    <td> Miss </td>
+                    <td> .697 </td>
+                  </tr>
+                  <tr>
+                    <td> Mr </td>
+                    <td> .156 </td>
+                  </tr>
+                  <tr>
+                    <td> Mrs </td>
+                    <td> .792 </td>
+                  </tr>
+                  <tr>
+                    <td>Ms</td>
+                    <td> 1.00 </td>
+                  </tr>
+                  <tr>
+                    <td> Rare </td>
+                    <td> .294</td>
+                  </tr>
+                  <tr>
+                    <td>Unique</td>
+                    <td>.400</td>
+                  </tr>
+                </table>
+              </p>
+              <p>
+                Well look at that! <br>
+                Masters survived on average 57% of the time, while Miss, Mrs, and Ms (I.E Women) survived more often than they died. People with rare titles survived on 30% of the time and people with unique titles only survived 40% of the times. Since none of these groups mean’s are 50% we can assume that the title of a person affected survival rate. </p>
+              </p>
+              <h1> Ladies First? </h1>
+              <p>
+                Or did gender affect survival rates? <br>
+                We already did this actually! If we look back at the ‘titles’ section, we see that passengers with feminine titles (Ms, Mrs, Miss) survived far more than passengers with masculine titles (“Mr”). <br>
+                So we can already say that gender does affect survival rate! But just to prove it to you, here are the mean survival of each gender<br><br>
+                <i>> titanic_df[['Sex', 'Survived']].groupby('Sex').mean()</i>
+                <table>
+                  <tr>
+                    <th> Sex </th>
+                    <th> Survived </th> 
+                  </tr>
+                  <tr>
+                    <td> female </td>
+                    <td> .742 </td>
+                  </tr>
+                  <tr>
+                    <td> male </td>
+                    <td> .188 </td>
+                  </tr>
+                </table>
+                <p>Again, we see that women survived 74% of the times, while men only survived 18% of the times.</p> 
+
+              </p>
+              <h1> Is Blood Lighter Than Water? </h1>
+              <p>
+                Let us look at the SibSp and Parch features in this one, as they both pertain to family. The question is: does family size impact survival?
+                <br>
+                First thing I want to do is show one the cross-table for these groups<br><br>
+                <i>> pd.crosstab(titanic_df.SibSp, titanic_df.Survived)</i>
+                <table>
+                  <tr>
+                    <th>Survived</th>
+                    <th>0</th>
+                    <th>1</th>
+                  </tr>
+                  <tr>
+                    <th>SibSp</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>0</th>
+                    <th>398</th>
+                    <th>210</th>
+                  </tr>
+                  <tr>
+                    <th>1</th>
+                    <th>97</th>
+                    <th>112</th>
+
+                  </tr>
+                  <tr>
+                    <th>2</th>
+                    <th>15</th>
+                    <th>13</th>
+
+                  </tr>
+                  <tr>
+                    <th>3</th>
+                    <th>12</th>
+                    <th>4</th>
+                  </tr>
+                  <tr>
+                    <th>4</th>
+                    <th>15</th>
+                    <th>3</th>
+                  </tr>
+                  <tr>
+                    <th>5</th>
+                    <th>5</th>
+                    <th>0</th>
+
+                  </tr>
+                  <tr>
+                    <th>8</th>
+                    <th>7</th>
+                    <th>0</th>
+                  </tr>
+
+                </table>
+                <p><i>> pd.crosstab(titanic_df.Parch, titanic_df.Survived)</i></p>
+                <table>
+                  <tr>
+                    <th> Survived </th>
+                    <th> 0 </th>
+                    <th> 1 </th>
+                  </tr>
+                  <tr>
+                    <td> Parch </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td> 0 </td>
+                    <td> 445 </td>
+                    <td> 233 </td>
+                  </tr>
+                  <tr>
+                    <td> 1 </td>
+                    <td> 53</td>
+                    <td> 65</td>
+                  </tr>
+                  <tr>
+                    <td> 2 </td>
+                    <td> 40 </td>
+                    <td> 40</td>
+                  </tr>
+                  <tr>
+                    <td> 3</td>
+                    <td> 2</td>
+                    <td> 3</td>
+                  </tr>
+                  <tr>
+                    <td> 4</td>
+                    <td> 4</td>
+                    <td> 0 </td>
+                  </tr>
+                  <tr>
+                    <td> 5 </td>
+                    <td> 4 </td>
+                    <td> 1 </td>
+                  </tr>
+                  <tr>
+                    <td> 6 </td>
+                    <td> 1</td>
+                    <td> 0 </td>
+                  </tr>
+                </table>
+                <p>The thing to note from these tables is that after a certain size (about 4-5) passengers were significantly likely to die. <br><br>
+
+                  Now let us create a new feature called “Family Size” which shows the family size of every passenger on the Titanic. We will get this by simply adding every passenger's SibSp and Parch values.<br><br>
+                  <i> >
+                    def addFamSize(df):<br>
+                    &emsp;&emsp;famSize = []<br>
+                    &emsp;&emsp;for i in range(0, len(df)):<br>
+                    &emsp;&emsp;&emsp;famMems = df.SibSp[i] + df.Parch[i]<br>
+                    &emsp;&emsp;&emsp;famSize.append(famMems)<br>
+                    &emsp;&emsp;df['FamilySize'] = famSize<br><br>
+                    > addFamSize(titanic_df)<br><br>
+                    > pd.crosstab(titanic_df.FamilySize, titanic_df.Survived)</i>
+                    <table>
+                     <tr>
+                      <th> Survived </th>
+                      <th> 0 </th>
+                      <th> 1 </th>
+                    </tr>
+                    <tr>
+                      <th> FamilySize </th>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td> 0 </td>
+                      <td> 374 </td>
+                      <td> 163 </td>
+                    </tr>
+                    <tr>
+                      <td> 1 </td>
+                      <td> 72 </td>
+                      <td> 89 </td>
+                    </tr>
+                    <tr>
+                      <td> 2 </td>
+                      <td> 43 </td>
+                      <td> 59 </td>
+                    </tr>
+                    <tr>
+                      <td> 3 </td>
+                      <td> 8 </td>
+                      <td> 21 </td>
+                    </tr>
+                    <tr>
+                      <td> 4 </td>
+                      <td> 12 </td>
+                      <td> 3</td>
+                    </tr>
+                    <tr>
+                      <td> 5 </td>
+                      <td> 19 </td>
+                      <td> 3 </td>
+                    </tr>
+                    <tr>
+                      <td> 6 </td>
+                      <td> 8 </td>
+                      <td> 4 </td>
+                    </tr>
+                    <tr>
+                      <td> 7 </td>
+                      <td> 6 </td>
+                      <td> 0 </td>
+                    </tr>
+                    <tr>
+                      <td> 10 </td>
+                      <td> 7 </td>
+                      <td> 0 </td>
+                    </tr>
+                  </table>
+                  <p>
+                    This further confirms what we speculated! In fact, it also shows us that people with about 1-3 family members are MORE likely to survive, and passengers with more than 3 family members are more likely to die. Another thing to note here is that people who were alone (0 family members) were significantly more likely to die. More on that later.
+                  </p>
+
+                </p>
+              </p>
+              <h1>Ticket To Ride </h1>
+              <p>
+                The ticket feature seems rather arbitrary as the ticket numbers are mostly unique, thus hold little value in predictions. Thus, if one wanted, they could remove this feature from the model and the accuracy would probably not be affected much. I will keep the feature just because models with more features (no matter how insignificant) will have higher accuracy (although higher risk of over fitting).
+              </p>
+              <h1>How Much Is A Disaster Worth? </h1>
+              <p>
+                The fare feature represents how much a passenger paid for a ticket. I hypothesize that this feature is closely related to the Passenger Class feature, as people who can afford pricier tickets, tend to be of higher socioeconomic class. Let’s see if this hypothesis holds true. <br><br>
+                Let’s split the Fares into categorical groups based on their 5 point summary. <br><br>
+                <i>> (titanic_df.Fare).describe()</i>
+                <table>
+                  <tr>
+                    <td>count</td>
+                    <td>891</td>
+                  </tr>
+                  <tr>
+                    <td>mean</td>
+                    <td>32.204</td>
+                  </tr>
+                  <tr>
+                    <td>std</td>
+                    <td>49.69</td>
+                  </tr>
+                  <tr>
+                    <td>min</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <td>25%</td>
+                    <td>7.91</td>
+                  </tr>
+                  <tr>
+                    <td>50%</td>
+                    <td>14.45</td>
+                  </tr>
+                  <tr>
+                    <td>75%</td>
+                    <td>31.00</td>
+                  </tr>
+                  <tr>
+                    <td>max</td>
+                    <td>512.32</td>
+                  </tr>
+                </table>
+                <p>We will consider the range [0-8] as ‘low-fare’, [8-15] as ‘low-medium’ fare, [15-31] as ‘medium-high’ fare, and [>31] as ‘high’ fare. If our hypothesis is true, than as we get higher on the fares, the chances of survival increase(just like passenger class). </p>
+                <p>
+                  For the feature:<br>
+                  0 = ‘low-fare’<br>
+                  1 = ‘low-medium’<br>
+                  2 = ‘medium-high’<br>
+                  3 = ‘high’<br> <br>
+                  <i> def splitFare(df):<br>
+                    &emsp;&emsp;cat_fares = []<br>
+                    &emsp;&emsp;for datapoint in df.Fare:<br>
+                    &emsp;&emsp;&emsp;if (datapoint > 0) and (datapoint <= 8):<br>
+                    &emsp;&emsp;&emsp;&emsp;cat_fares.append(0)<br>
+                    &emsp;&emsp;&emsp;elif (datapoint > 8) and (datapoint <=15):<br>
+                    &emsp;&emsp;&emsp;&emsp;cat_fares.append(1)<br>
+                    &emsp;&emsp;&emsp;elif (datapoint > 15) and (datapoint <=31):<br>
+                    &emsp;&emsp;&emsp;&emsp;cat_fares.append(2)<br>
+                    &emsp;&emsp;&emsp;else:<br>
+                    &emsp;&emsp;&emsp;&emsp;cat_fares.append(3)<br>
+                    df['CatFare'] = cat_fares<br><br>
+                    > splitFare(titanic_df)</i><br><br>
+                    Now lets see the cross table and compare the means <br><br>
+                    <i>> pd.crosstab(titanic_df.CatFare, titanic_df.Survived)</i>
+                    <table>
+                      <tr>
+                        <th>Survived</th>
+                        <th> 0 </th>
+                        <th> 1</th>
+                      </tr>
+                      <tr>
+                        <th> CatFare</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td> 0 </td>
+                        <td> 175 </td>
+                        <td> 51 </td>
+                      </tr>
+                      <tr>
+                        <td> 1 </td>
+                        <td> 155 </td>
+                        <td> 62 </td>
+                      </tr>
+                      <tr>
+                        <td> 2 </td>
+                        <td> 112 </td>
+                        <td> 99 </td>
+                      </tr>
+                      <tr>
+                        <td> 3 </td>
+                        <td> 107 </td>
+                        <td> 130 </td>
+                      </tr>
+                    </table>
+                    <p><i>> titanic_df[['CatFare', 'Survived']].groupby('CatFare').mean()
+                     Survived</i></p>
+                     <table>
+                      <tr>
+                        <th> CatFare </th>
+                        <th> Survived </th>
+                      </tr>
+                      <tr>
+                        <td> 0 </td>
+                        <td> .225 </td>
+                      </tr>
+                      <tr>
+                        <td> 1 </td>
+                        <td> .285 </td>
+                      </tr>
+                      <tr>
+                        <td> 2 </td>
+                        <td> .469 </td>
+                      </tr>
+                      <tr>
+                        <td> 3 </td>
+                        <td> .548 </td>
+                      </tr>
+
+                    </table>
+                    <p>As we can see from the previous code, our theory was correct, people who paid more for their ticket tended to survive more! Also one thing to note: the ‘low’ and ‘low-medium’ categories seem to have very similar survival rates. This implies that we could perhaps combine the two into an overall ‘low’ category. I will not do so just because of personal preference. </p>
+
+                  </p>
+                </p>
+                <h1>A Place To Rest?</h1>
+                <p>
+                  The cabin feature demonstrates one of the eternal conundrums of data science, what should we do with missing values? Well, one can simply replace the values with the mean or medium value, however that introduces bias to the data and could skew accuracy. Another solution is to simply get rid of the observation, except in this case removing all the null observations from this data-set removes a signifigant amount of points, which will also affect accuracy. What I am going to do, is I will just ignore it. A lot of modern ML techniques are robust enough to work with null values and still give good accuracy. On top of that, ignoring the null values won’t affect the data set in any way, giving us the minimum amount of data bias. It does tend to mean that in this case, Cabin will most likely not be an effective predictor, but some prediction better is better than no prediction power, or worst yet, incorrect prediction power. 
+                </p>
+                <h1>The Beginning Of The End</h1>
+                <p>
+                  Does the location where one embarked ultimately seal their fate? I am going to guess and say ‘no’ but only one way to find out!<br><br>
+                  First, let's check out the contingency tables.<br><br>
+                  <i>> pd.crosstab(titanic_df.Embarked, titanic_df.Survived)</i>
+                  <table>
+                    <tr>
+                      <th> Survived </th>
+                      <th> 0 </th>
+                      <th> 1 </th>
+                    </tr>
+                    <tr>
+                      <th> Embarked </th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <td> C </td>
+                      <td> 75 </td>
+                      <td> 93 </td>
+                    </tr>
+                    <tr>
+                      <td> Q </td>
+                      <td> 47 </td>
+                      <td> 30 </td>
+                    </tr>
+                    <tr>
+                      <td> S </td>
+                      <td> 472 </td>
+                      <td> 217 </td>
+                    </tr>
+                  </table>
+                  <p><i>> titanic_df[['Embarked', 'Survived']].groupby('Embarked').mean()</i></p>
+                  <table>
+                    <tr>
+                      <th> Embarked </th>
+                      <th> Survived </th>
+                    </tr>
+                    <tr>
+                      <td> C </td>
+                      <td> .553 </td>
+                    </tr>
+                    <tr>
+                      <td> Q </td>
+                      <td> .389 </td>
+                    </tr>
+                    <tr>
+                      <td> S </td>
+                      <td> .33 </td>
+                    </tr>
+
+                  </table>
+                  <p>Well look at that. I was wrong, look like people who embarked from Cherbourg survived more than people who embarked from Queenstown or Southampton. One reason for this is perhaps Cherbourg had more wealthy passengers in it, and as we know wealthy people were more likely to survive. But without further feature analysis, this is just speculation.<br><br> That is all of our features and thus the exploration phase is over. Now begins the next phase: the 'engineering' phase.</p>
+                </p>
+
+                <h1>More Feature Engineering! </h1>
+                <p>
+                  The process of creating new features out of existing ones is called 'feature engineering'. Feature engineering is one of the most important parts of data scienece, as it creates and reveals new relationships between the features, thus giving our model more power and robustness. (Sidebar: In general, the more features one includes in their model, the more predictive power it has, however adding more features tends to increase the risk of overfitting. More on that later.) Notice that we already did a little feature engineering (CatFare, Family Size) in the previous sections! Now we're going to engineer a few more.
+                </p>
+                <h1> Children First! </h1>
+                <p> 
+                  Generally in disasters, women, children, and the elderly were among the first to get to safety. Thus, it would make sense to keep track of which passenger was a child. Let's define a child as someone who is 12 years old or younger. <br>
+                  <br><i>>
+                  def IsChild(titanic_df):<br>
+                  &emsp;&emsp;child_ar = []<br>
+                  &emsp;&emsp;for passenger in titanic_df.Age:<br>
+                  &emsp;&emsp;&emsp;if(passenger < 12):<br>
+                  &emsp;&emsp;&emsp;&emsp;child_ar.append(1)<br>
+                  &emsp;&emsp;&emsp;else:<br>
+                  &emsp;&emsp;&emsp;&emsp;child_ar.append(0)<br>
+                  titanic_df['IsChild']  child_ar<br>
+                </i>
+
+              </p>
+              <h1> Mothers Second! </h1>
+              <p>
+                We also know that mothers were often given spots on the life boats during the Titanic disaster, so let's create a feature that accounts for this.<br> 
+                We will define a mother as someone who is<br>
+                i) female <br>
+                ii) over the age of 20 <br>
+                iii) has at a Parch value greater than 0 <br>
+                iv) has the title "Mrs"<br><br>
+
+                <i>def isMother(titanic_df):<br>
+                  mom_ar = [] <br>
+                  for i,j,k,p in zip(titanic_df.Sex, titanic_df.Age, titanic_df.Parch, titanic_df.Title):<br>
+                  &emsp;&emsp;if(i == 'female'):<br>
+                  &emsp;&emsp;&emsp;if(j > 20):<br>
+                  &emsp;&emsp;&emsp;&emsp;if(k > 0):<br>
+                  &emsp;&emsp;&emsp;&emsp;&emsp;if(p == 'Mrs'):<br>
+                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;mom_ar.append(1)<br>
+                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;continue<br>
+                  &emsp;&emsp;else:<br>
+                  &emsp;&emsp;&emsp;mom_ar.append(0)<br>
+                  titanic_df['IsMom'] = mom_ar</i>
+    
+
+              </p>
+              <h1>Nobody Wants To Die Alone </h1>
+              <p>
+                As we noted during our analysis of Parch and SibSp, people who were alone in the Titanic, tended to die more frequently. Let's create a feature called "IsAlone" that displays this. <br><br>
+                <i>def IsAlone(titanic_df):<br>
+                  &emsp;&emsp;alone_ar = []<br>
+                  &emsp;&emsp;for passenger in titanic_df.FamilySize:<br>
+                  &emsp;&emsp;&emsp;if(passenger == 0):<br>
+                  &emsp;&emsp;&emsp;&emsp;alone_ar.append(1)<br>
+                  &emsp;&emsp;&emsp;else:<br>
+                  &emsp;&emsp;&emsp;&emsp;alone_ar.append(0)<br>
+                  titanic_df['IsAlone'] = alone_ar<br></i>
+                  <p><br><br>I say thats enough feature engineering for now: 4 new features isn't a bad start! Of course there can be more done, depending on one's creativity they could probably think of a host more features that I didn't even think of!
+                  </p>
+
+              <h1> Handling Nulls </h1>
+              <p>
+                  Before we get predicting, it's important to acknowledge the NaN values in our dataset. As we saw before, the cabin value had a bunch of NaNs in it that we chose not to do anything about. There are also NaN values in our Age feature, however this time we can do something about it due to the feature being numerical and not emcompassing too many data points.
+                  So one thing to note is: most sklearn algorthms can handle null values, however they cannot handle the value actually being NaN (It's weird, I know), what we can do is code NaN to a different number, such as -1 or -99, and the algorthm should work fine. What I am going to do is I am going to replace the NaNs in age with a random number from a normal distribution, using the mean and standard deviation of the Age feature. This is a simple and easy way to replace null values that probably won't introduce too much error to your data, assuming that age is reletively normal. 
+
+              </p>
+              <h1> Predictions and Cross Validation </h1>
+              <p>
+                 Finally, we have arrived at the final step! Before we begin making predictions, we must understand the concept of cross validation. So the way predictive models work is that they must first be trained on data-set in order to 'learn' which features lead to which outcome. The problem is: if we use our entire dataset to train the model, than the model already knows the result of every observation. While this may seem like a good thing, it usually isn't because it leads to what data scientist call "overfitting", which means that our model is really good at predicting our data-set, but really bad at generalizing real-world observations.<br><br> One way to counter over-fitting is through 'cross-validation'. In essence, all cross validation means is to split our dataset into two parts, a train set and a test set. There are a lot of methods to cross-validation including K-folds, Stratified Shuffle, Leave-One-Out, but those are beyond the scope of a beginning project. What we are going to do, is we are going to randomly select 30% of our total data, and make that into our test set and use the rest as our train set. <br><br>
+                 Sklearn has a module that does this for us automatically<br><br>
+                 <i> > from sklearn.model_selection import train_test_split <br><br>
+                     > train_x, test_x, train_y, test_y = train_test_split(titanic_df[predictors], titanic_df['Survived'], test_size = .30)</i><br><br>
+                  Where 'predictors' is all the features that aren't 'Survived' <br><br>
+
+                  Great! Now we are finally able to fit a model using our train_x, and train_y partitions. There are a lot of models we can use to fit and predict, such as KNN, Support Vector Machines, Logistic Regression, and each one of those models can take a blog post of it's own. So instead, heres a list of them all:<br><br> <a href=https://en.wikipedia.org/wiki/Statistical_classification>https://en.wikipedia.org/wiki/Statistical_classification</a><br><br> Fortunately, Sklearn has a lot of those models build into it, so the rest is just looking up documentation and plugging numbers in.<br><br> In this example, lets use the K-Nearest Neighbors algorithm.<br><br> 
+                  <i>> from sklearn.neighbors import KNeighborsClassifier<br><br>
+                    > clf = KNeighborsClassifier()<br>
+                    > clf.fit(train_x, train_y)<br><br>
+                  </i>
+
+                  And thats it! Now you're ready to make predictions based on new observations! Just type:<br><br>
+                  <i> > clf.predict(//data point //)</i><br><br>
+                  Lets try this on our test_x!
+                  <i> > clf.predict(test_x) </i> <br><br>
+
+                  This should return you an array of 1s and 0s signifying whether or not the passenger in our test_x data frame survived or died! <br><br>
+
+                  And thats it! That is the basic data-science in a nutshell. Bear in mind, there is still more to do with this data-set! The null values could be replaced better, and more features could still be engineered! This post was only meant to be a little intro to get people on their feet. Hope you learned something! 'Till next time!
+
+              </p>
+
+
+                </div>
+
+
+
+              </div>
+            </body>
+            </html>
